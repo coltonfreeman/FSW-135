@@ -4,16 +4,14 @@ import Navbar from '../components/Navbar';
 import IssueForm from '../components/IssueForm';
 import IssueList from '../components/IssueList';
 
-
-
 export default function Profile(){
   const { user: {username}, addIssue, issues, getUserIssues } = useContext(UserContext)
   
-  const [getIssues, setIssues] = useState(issues);
-
-  useEffect(() => {
+   const [getIssues, setIssues] = useState(issues);
+  
+   useEffect(() => {
     getUserIssues()
-  },[getIssues]);
+   },[getIssues]);
 
   return (
     <div className="profile">
@@ -23,7 +21,6 @@ export default function Profile(){
       <IssueForm addIssue={addIssue}/>
       <h3>Your Issues</h3>
       <IssueList issues={issues}/>
-
     </div>
   )
 }

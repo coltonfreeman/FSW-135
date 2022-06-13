@@ -20,8 +20,13 @@ export default function IssueForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-    addIssue(inputs)
-    setInputs(initInputs)
+    
+    const renderIssues = async() => {
+      await addIssue(inputs);
+      await setInputs({inputs, ...initInputs})
+    }
+    renderIssues()
+    
   }
 
   const { title, description, imgUrl } = inputs

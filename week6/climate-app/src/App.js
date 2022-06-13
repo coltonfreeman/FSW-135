@@ -4,7 +4,8 @@ import Auth from './components/Auth.js'
 import Profile from './components/Profile';
 import Login from './components/Login';
 import Signup from './components/Signup';
-
+import NotFoundPage from './components/NotFoundPage.js';
+import Public from './components/Public.js';
 import { UserContext } from './context/UserProvider.js'
 
 export default function App(){
@@ -12,10 +13,12 @@ export default function App(){
   return (
     <div className="app">
       <Routes>
-        {/* <Route path="/profile" element={token ? <Profile /> : <Navigate to="/"/> }/> */}
-        <Route exact path="/" element={token ? <Profile /> : <Navigate to="/signup"/>} /> 
-        <Route exact path="/signup" element={ <Signup /> } /> 
-        <Route exact path="/login" element={ token ? <Profile/> : <Login /> } /> 
+        <Route exact path="/" element={token ? <Navigate to="/profile" /> : <Navigate to="/signup"/>} /> 
+        <Route exact path="/profile" element={token ? <Profile /> : <Navigate to="/signup"/>} /> 
+        <Route exact path="/signup" element={token ? <Navigate to="/profile" /> : <Signup/>} /> 
+        <Route exact path="/login" element={ token ? <Navigate to="/profile"/> : <Login /> } />
+        <Route exact path="/public" element={<Public/>}/>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   )
