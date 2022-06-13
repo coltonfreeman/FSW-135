@@ -3,7 +3,6 @@ const app = express();
 require('dotenv').config()
 const morgan = require("morgan");
 const mongoose = require('mongoose');
-const expressJwt = require('express-jwt');
 
 
 const PORT = 9000;
@@ -23,9 +22,6 @@ async function main() {
 
 //routes
 app.use('/auth', require('./routes/authRouter'));
-app.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}));
-app.use('/api/issue', require('./routes/issueRouter'));
-
 
 
 //global error-handler

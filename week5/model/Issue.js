@@ -6,7 +6,18 @@ const issueSchema = new Schema({
         type: String,
         required: true
     },
-    author: {
+    description: {
+        type: String
+    },
+    imgUrl: {
+        type: String,
+        required: false
+    },
+    upvote: {
+        type: Boolean,
+        required: false
+    },
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
